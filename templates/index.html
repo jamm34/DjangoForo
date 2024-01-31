@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <title>{% block title %} {% endblock %} | Django Foro</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'verde': '#7aacb3',
+                        'rosa': '#cf8da7',
+                        'rojo': '#aa5377',
+                        'oscuro': '#3b3759',
+                        'claro': '#f7ece1',
+                        'mate': '#4c6e81',
+                        'negro': '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-mate">
+    {% include 'navbar.html' %}
+
+    <div class="container mx-auto">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
