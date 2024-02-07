@@ -1,8 +1,116 @@
 {% extends 'index.html' %}
-
+{% load static %}
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
-<h1 class="text-claro">Hola mundo</h1>
+<div
+    class="grid gap-x-8 gap-y-4 grid-cols-1 p-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-3">
+    <div class="sm:mb-4 md:mb-4 lg:mb-4 xl:mx-10 2xl:mx-10`">
+        <div class="bg-oscuro rounded-lg">
+            <h1 class="text-xl font-mono p-2 border-b border-claro font-semibold text-claro text-center">Meet new people
+            </h1>
+            <ul>
+                <li class="flex justify-start ml-6 p-3">
+                    <div class="mr-6">
+                        <img class="w-10 h-10 rounded-full" src="" alt="" />
+                    </div>
+                    <div class="mr-6">
+                        <a href="" class="text-lg text-claro font-mono text-semibold hover:text-verde">
+                            Username
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div class="mb-4">
+            <div class="bg-oscuro p-3 rounded-lg">
+                <h1 class="text-xl p-2 text-center font-mono font-semibold text-claro">
+                    Rooms Availables
+                </h1>
+            </div>
+        </div>
+        <div class="my-2">
+            <div class="bg-oscuro rounded-lg p-2">
+
+                <h1 class="text-xl p-2 text-center font-mono font-semibold text-claro">
+                    Room Name
+                </h1>
+                <div class="flex justify-center">
+                    <a href="" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
+                        Enter
+                    </a>
+                    <form action="." class="ml-2" method="POST">
+                        {% csrf_token %}
+
+                        <input type="hidden">
+                        <button type="submit">
+                            <img src="{% static 'images/unlike.jpg'%}" width="40" height="40" />
+                        </button>
+                        <button type="submit">
+                            <img src="{% static 'images/like.jpg'%}" width="40" height="40" />
+                        </button>
+                    </form>
+                </div>
+                <div class="flex justify-center">
+                    <p class="text-sm font-mono font-semibold p-2 text-claro">
+                        Host:
+                        <a href="" class="text-sm font-mono hover:text-verde font-semibold text-claro ">
+                            Admin
+                        </a>
+                        <spam class="font-mono font-semibold text-rosa">
+                            34 Like
+                        </spam>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sm:mb-4 md:mb-4 lg:mb-4 xl:mx-10 2xl:mx-10">
+        <div class="bg-oscuro rounded-lg">
+            <h1 class="text-xl border-b border-claro p-2 text-center font-mono font-semibold text-claro">
+                Liked Romms
+            </h1>
+            <ul>
+                <div class="my-2 p-4">
+
+                    <div class="bg-claro p-2 rounded-lg">
+                        <h1 class="text-xl p-2 text-center font-mono font-semibold text-oscuro">
+                            Name Romm
+                        </h1>
+                        <div class="flex justify-center">
+                            <a href="" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
+                                Enter
+                            </a>
+                            <form action="." class="ml-2" method="POST">
+                                {% csrf_token %}
+
+                                <input type="hidden">
+                                <button type="submit">
+                                    <img src="{% static 'images/unlike.jpg'%}" width="40" height="40" />
+                                </button>
+                                <button type="submit">
+                                    <img src="{% static 'images/like.jpg'%}" width="40" height="40" />
+                                </button>
+                            </form>
+                        </div>
+                        <div class="flex justify-center">
+                            <p class="text-sm font-mono font-semibold p-2 text-oscuro">
+                                Host:
+                                <a href="" class="text-sm font-mono hover:text-verde font-semibold text-oscuro ">
+                                    Admin
+                                </a>
+                                <spam class="font-mono font-semibold text-rosa">
+                                    34 Like
+                                </spam>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
