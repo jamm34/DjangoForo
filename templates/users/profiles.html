@@ -9,7 +9,7 @@
     <div class="sm:mb-4 md:mb-4 lg:mb-4 xl:mx-10 2xl:mx-10">
         <div class="bg-oscuro rounded-lg">
             <h1 class="text-xl p-6 font-semibold font-mono text-center text-claro">
-                Your personal details
+                Personal details
             </h1>
             <div
                 class="grid grid-cols-1 sm:grid-cols-1 ml-[50px]  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
@@ -26,12 +26,7 @@
                     <p class="mb-2 font-mono font-semibold flex text-claro">
                         Bio: <span class="text-claro"> {{ user.bio }}</span>
                     </p>
-                    <a href=""
-                        class="px-10 py-4 mr-10 mt-4 font-mono text-center font-semibold flex text-negro rounded-lg bg-rosa">
-                        <span class="flex-1 whitespace-nowrap">
-                            Edit Profile
-                        </span>
-                    </a>
+                    
                 </div>
             </div>
 
@@ -45,12 +40,11 @@
                 </h1>
             </div>
         </div>
-        {% for room in rooms %}
         <div class="my-2">
             <div class="bg-oscuro rounded-lg p-2">
 
                 <h1 class="text-xl p-2 text-center font-mono font-semibold text-claro">
-                    {{ room.name }}
+                    Room Name
                 </h1>
                 <div class="flex justify-center">
                     <a href="" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
@@ -68,23 +62,19 @@
                         </button>
                     </form>
                 </div>
-                <div class="flex justify-center p-3">
-
-                    <a href="{% url 'update_room' room.id %}">
-                        <img class="mr-1" src="{% static 'images/editar.jpg'%}" width="30" height="30" />
-                    </a>
-                    <a href="{% url 'delete_room' room.id %}">
-                        <img class="ml-1 mr-3" src="{% static 'images/eliminar.jpg'%}" width="30" height="30" />
-                    </a>
-                    <spam class="font-mono font-semibold text-rosa mt-2 ml-2">
-                        34 Like
-                    </spam>
+                <div class="flex justify-center">
+                    <p class="text-sm font-mono font-semibold p-2 text-claro">
+                        Host:
+                        <a href="" class="text-sm font-mono hover:text-verde font-semibold text-claro ">
+                            Admin
+                        </a>
+                        <spam class="font-mono font-semibold text-rosa">
+                            34 Like
+                        </spam>
                     </p>
                 </div>
             </div>
-
         </div>
-        {% endfor %}
     </div>
 </div>
 

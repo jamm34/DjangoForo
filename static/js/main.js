@@ -15,6 +15,6 @@ alertButton.addEventListener('click', () => {
     alerta.classList.toggle('hidden')
     setTimeout(() => {
 alerta.classList.add('hidden');
-    }, 50000)
+    }, 5000)
 });
 }
