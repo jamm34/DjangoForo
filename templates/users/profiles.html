@@ -40,11 +40,12 @@
                 </h1>
             </div>
         </div>
+        {% for room in rooms %}
         <div class="my-2">
             <div class="bg-oscuro rounded-lg p-2">
 
                 <h1 class="text-xl p-2 text-center font-mono font-semibold text-claro">
-                    Room Name
+                    {{ room.name }}
                 </h1>
                 <div class="flex justify-center">
                     <a href="" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
@@ -66,7 +67,7 @@
                     <p class="text-sm font-mono font-semibold p-2 text-claro">
                         Host:
                         <a href="" class="text-sm font-mono hover:text-verde font-semibold text-claro ">
-                            Admin
+                            {{  room.user.username }}
                         </a>
                         <spam class="font-mono font-semibold text-rosa">
                             34 Like
@@ -75,6 +76,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 

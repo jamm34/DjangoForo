@@ -7,9 +7,10 @@ from . forms import RegisterUserForm
 
 # Create your views here.
 
-def profiles(request):
-   
-    return render(request, "users/profiles.html")
+def profiles(request, pk):
+    user =  User.objects.get(pk=pk)
+    rooms = user.room_set.all()
+    return render(request, "users/profiles.html", {'user':user, 'rooms':rooms})
 
 def my_profile(request):
      user = request.user

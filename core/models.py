@@ -19,5 +19,5 @@ LIKE_CHOICES = {
 
 class Like(models.Model):
     user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, related_name='romm', on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, related_name='room', on_delete=models.CASCADE)
     value = models.CharField(choices=LIKE_CHOICES, default='Like', max_length=10)

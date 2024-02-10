@@ -8,18 +8,21 @@
     class="grid gap-x-8 gap-y-4 grid-cols-1 p-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-3">
     <div class="sm:mb-4 md:mb-4 lg:mb-4 xl:mx-10 2xl:mx-10`">
         <div class="bg-oscuro rounded-lg">
-            <h1 class="text-xl font-mono p-2 border-b border-claro font-semibold text-claro text-center">Meet new people
+            <h1 class="text-xl font-mono p-2 border-b border-claro font-semibold text-claro text-center">
+                Meet new people
             </h1>
             <ul>
+                {% for u in filtro %}
                 <li class="flex justify-start ml-6 p-3">
                     <div class="mr-6">
-                        <img class="w-10 h-10 rounded-full" src="" alt="" />
+                        <img class="w-10 h-10 rounded-full" src="{{ u.avatar.url }}" alt="{{u.username}}" />
                     </div>
                     <div class="mr-6">
-                        <a href="{% url 'profiles' %}" class="text-lg text-claro font-mono text-semibold hover:text-verde">
-                            Username
+                        <a href="{% url 'profiles' u.id %}" class="text-lg text-claro font-mono text-semibold hover:text-verde">
+                            {{ u.username }}
                         </a>
                     </div>
+                    {% endfor%}
                 </li>
             </ul>
         </div>
@@ -58,8 +61,8 @@
                 <div class="flex justify-center">
                     <p class="text-sm font-mono font-semibold p-2 text-claro">
                         Host:
-                        <a href="" class="text-sm font-mono hover:text-verde font-semibold text-claro ">
-                            {{  room.user.username }}
+                        <a href="{% url 'profiles' room.user.id %}" class="text-sm font-mono hover:text-verde font-semibold text-claro ">
+                            {{  room.user.username }} 
                         </a>
                         <spam class="font-mono font-semibold text-rosa">
                             34 Like

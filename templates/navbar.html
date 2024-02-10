@@ -6,7 +6,7 @@
         </a>
 
         <div class="hidden md-2 md:flex">
-            <form class="m-2" method="GET" action=".">
+            <form class="m-2" method="GET" action="{% url 'search' %}">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -15,9 +15,8 @@
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg>
                     </div>
-                    <input class="block w-full p-4 pl-10 text-sm rounded-lg" placeholder="Search here..." />
+                    <input name="query" class="block w-full p-4 pl-10 text-sm rounded-lg" placeholder="Search here..." />
                 </div>
-
             </form>
             {% if request.user.is_authenticated %}
             <a href="{% url 'logout_user' %}"
@@ -57,7 +56,7 @@
 
     <div class="hidden" id="mobile-menu">
         <div class="flex flex-col py-3">
-            <form class="m-2" method="GET" action=".">
+            <form class="m-2" method="GET" action="{% url 'search' %}">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -66,7 +65,7 @@
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg>
                     </div>
-                    <input class="block w-full p-4 pl-10 text-sm rounded-lg" placeholder="Search here..." />
+                    <input name="query" class="block w-full p-4 pl-10 text-sm rounded-lg" placeholder="Search here..." />
                 </div>
             </form>
             {% if request.user.is_authenticated %}

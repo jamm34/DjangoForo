@@ -3,9 +3,14 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Room, Like
 from . forms import RoomForm
-
+from users.models import User
 
 # Create your views here.
+
+def search(request):
+    query = request.GET.get('query', '')
+    rooms = Room.objects.filter(name__icontains=query)
+    return render(request, 'core/search.html', {'query':query, 'rooms':rooms})
 
 def delete_room(request, pk):
     room = Room.objects.get(pk=pk)
@@ -53,10 +58,14 @@ def room(request):
 
 
 def home(request):
+    user = request.user
+    users = User.objects.exclude(username=user.username)
+    filtro = users[0:5]
+
     rooms = Room.objects.all()
 
     paginator = Paginator(rooms, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'core/home.html', {'page_obj':page_obj})
+    return render(request, 'core/home.html', {'page_obj':page_obj, 'filtro':filtro})
 
