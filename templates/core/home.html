@@ -43,19 +43,22 @@
                     {{  room.name }}
                 </h1>
                 <div class="flex justify-center">
-                    <a href="{% url 'room' %}" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
+                    <a href="{% url 'room' room.id %}" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
                         Enter
                     </a>
-                    <form action="." class="ml-2" method="POST">
+                    <form action="{% url 'like_room' %}" class="ml-2" method="POST">
                         {% csrf_token %}
 
-                        <input type="hidden">
+                        <input type="hidden" name="room_id" value="{{ room.id }}">
+                        {% if  user not in room.like.all %}
                         <button type="submit">
                             <img src="{% static 'images/unlike.jpg'%}" width="40" height="40" />
                         </button>
+                        {% else %}
                         <button type="submit">
                             <img src="{% static 'images/like.jpg'%}" width="40" height="40" />
                         </button>
+                        {% endif %}
                     </form>
                 </div>
                 <div class="flex justify-center">
@@ -65,7 +68,7 @@
                             {{  room.user.username }} 
                         </a>
                         <spam class="font-mono font-semibold text-rosa">
-                            34 Like
+                            {{ room.like.all.count }}  Like
                         </spam>
                     </p>
                 </div>
@@ -104,41 +107,46 @@
                 Liked Romms
             </h1>
             <ul>
+                {% for like in likes %}
                 <div class="my-2 p-4">
 
                     <div class="bg-claro p-2 rounded-lg">
                         <h1 class="text-xl p-2 text-center font-mono font-semibold text-oscuro">
-                            Name Romm
+                            {{  like.name }}
                         </h1>
                         <div class="flex justify-center">
-                            <a href="" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
+                            <a href="{% url 'room' like.id %}" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
                                 Enter
                             </a>
-                            <form action="." class="ml-2" method="POST">
+                            <form action="{% url 'like_room' %}" class="ml-2" method="POST">
                                 {% csrf_token %}
-
-                                <input type="hidden">
+        
+                                <input type="hidden" name="room_id" value="{{ like.id }}"/>
+                                {% if  user not in room.like.all %}
                                 <button type="submit">
                                     <img src="{% static 'images/unlike.jpg'%}" width="40" height="40" />
                                 </button>
+                                {% else %}
                                 <button type="submit">
                                     <img src="{% static 'images/like.jpg'%}" width="40" height="40" />
                                 </button>
+                                {% endif %}
                             </form>
                         </div>
                         <div class="flex justify-center">
                             <p class="text-sm font-mono font-semibold p-2 text-oscuro">
                                 Host:
                                 <a href="" class="text-sm font-mono hover:text-verde font-semibold text-oscuro ">
-                                    Admin
+                                    {{ like.user.username }}
                                 </a>
                                 <spam class="font-mono font-semibold text-rosa">
-                                    34 Like
+                                   {{ like.room.all.count }} Like
                                 </spam>
                             </p>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </ul>
         </div>
     </div>

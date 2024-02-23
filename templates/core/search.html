@@ -26,7 +26,7 @@
                     {{  room.name }}
                 </h1>
                 <div class="flex justify-center">
-                    <a href="{% url 'room' %}" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
+                    <a href="{% url 'room' room.id %}" class="p-3 font-mono font-semibold text-negro rounded-lg bg-rosa">
                         Enter
                     </a>
                     <form action="." class="ml-2" method="POST">
